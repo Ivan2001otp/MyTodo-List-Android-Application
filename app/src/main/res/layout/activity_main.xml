@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#06155E"
+
+            app:popupTheme="@style/Theme.MyToDoList.PopUpOverlay"
+             />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="3dp"
+        android:layout_marginTop="58dp"
+        android:visibility="visible"
+        />
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:padding="3dp"
+        android:id="@+id/lottie_animation"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/lottie_animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        />
+
+    <ImageView
+        android:id="@+id/fab_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        android:elevation="16dp"
+        android:outlineAmbientShadowColor="@color/black"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24"
+        android:contentDescription="@string/fab_content_desc"
+        tools:ignore="Content Description"
+        />
+   <!--
+        Add recylce view..........
+   -->
+    <include layout="@layout/bottom_sheet"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

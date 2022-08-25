@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyToDoList</string>
+    <string name="todo_et_hint">Eg: Dinner, Programming etc...</string>
+    <string name="due_date_text_view_val">Due Date</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="today">Today</string>
+    <string name="high_radio_priority">High</string>
+    <string name="fab_content_desc">This is my first full fledge application in Android</string>
+    <string name="about">About</string>
+    <string name="string_about">Version 1.0.0</string>
+</resources>
