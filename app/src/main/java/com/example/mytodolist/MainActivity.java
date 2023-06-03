@@ -1,6 +1,10 @@
 package com.example.mytodolist;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -42,9 +46,16 @@ public class MainActivity extends AppCompatActivity implements OnToDoClickListen
     private RecyclerViewAdapter recyclerViewAdapter;
     private EditText todo_edit_text;
     private ConstraintLayout todoRowLayout;
+    private static final String CHANNEL_ID = "todo_list_channel";
 
     private AlertDialog.Builder deleteDialog ;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        getWindow().setStatusBarColor(Color.BLACK);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +68,14 @@ public class MainActivity extends AppCompatActivity implements OnToDoClickListen
 
 
         //animation
-;
+
 
         //setting the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
                         if(getSupportActionBar()!=null){
-                            getSupportActionBar().setSubtitle("\uD835\uDE48\uD835\uDE6E\uD835\uDE4F\uD835\uDE64\uD835\uDE59\uD835\uDE64-\uD835\uDE47\uD835\uDE5E\uD835\uDE68\uD835\uDE69");
+                           // getSupportActionBar().setSubtitle("\uD835\uDE48\uD835\uDE6E\uD835\uDE4F\uD835\uDE64\uD835\uDE59\uD835\uDE64-\uD835\uDE47\uD835\uDE5E\uD835\uDE68\uD835\uDE69");
+                            getSupportActionBar().setSubtitle("CodeClause-TodoList");
                         }
                         int white = Color.parseColor("#ffffff");
                         int yellow = Color.parseColor("#EEE311");
@@ -94,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements OnToDoClickListen
                             lottieAnimationView.setVisibility(View.VISIBLE);
                             lottieAnimationView.playAnimation();
                         }
-                        Toast.makeText(MainActivity.this,"Add Your Task,Please",Toast.LENGTH_LONG)
+                        Toast.makeText(MainActivity.this,"Add Your Task Please",Toast.LENGTH_LONG)
                                 .show();
             }else {
                     if(lottieAnimationView.getVisibility() == View.VISIBLE){
@@ -126,9 +138,10 @@ public class MainActivity extends AppCompatActivity implements OnToDoClickListen
         });
     }
 
+
+
     public void showBottomSheetDialog(){
         bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
-
     }
 
     //sets the options menu.
@@ -201,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements OnToDoClickListen
     public void chipOnClick(Task task) {
         Snackbar.make(floatingButton,task.getTask(),Snackbar.LENGTH_SHORT)
                 .show();
+
     }
 
 

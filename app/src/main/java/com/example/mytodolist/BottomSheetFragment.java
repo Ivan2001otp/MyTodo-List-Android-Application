@@ -2,6 +2,7 @@ package com.example.mytodolist;
 import com.example.mytodolist.Data.Priority;
 import com.example.mytodolist.Model.Task;
 
+import android.app.AlarmManager;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     private ImageView Priority_button;
     private ImageView Save_button;
 
+    //setting the date with time
+    private ImageView Set_Time;
+
     private RadioButton selectedRadioBtn;
     private int selectRadioId;
     private Priority settingPriority;
@@ -52,7 +56,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     private boolean isEdit;
     private TaskViewModel taskViewModel;
     private Date dueDate;
+    private long dueDateTimeStamp;
 
+    private AlarmManager alarmManager;
 
      private final Calendar calendar  = Calendar.getInstance();
 
@@ -71,6 +77,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         Save_button = view.findViewById(R.id.upload_todo_button);
         priorityRadioGroup = view.findViewById(R.id.radioGroup);
         calendarView = view.findViewById(R.id.calendarView);
+        Set_Time = view.findViewById(R.id.set_alarm_img);
 
         today_chip = view.findViewById(R.id.today_chip_button);
         tomorrow_chip = view.findViewById(R.id.tomorrow_chip_button);
@@ -104,6 +111,14 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
+
+          //setting the alarm image.
+        Set_Time.setOnClickListener(v->{
+            Toast.makeText(getActivity(),"Alarm set",Toast.LENGTH_SHORT)
+                    .show();
+        });
+
+
 
         Priority_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +191,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                                 ,settingPriority,false);
 
 
+
+
                         if(isEdit){
                             Task updatedTask = sharedViewModel.getSelectedItem().getValue();
                             isEdit = false;
@@ -199,7 +216,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                         }else{
                             TaskViewModel.insertViewModel(myTask);
                             Log.d("onCreate", "saved : "+myTask.getTask());
+                            //
                         }
+
+
 
                         if(BottomSheetFragment.this.isVisible()){
                             BottomSheetFragment.this.dismiss();
@@ -223,15 +243,21 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         if(id == R.id.today_chip_button){
             calendar.add(Calendar.DAY_OF_YEAR,0);
             dueDate = calendar.getTime();
-            Log.d("onCreate", "today : "+dueDate.toString());
+            dueDateTimeStamp = calendar.getTimeInMillis();
+
+            Log.d("onCreate", "today : "+dueDateTimeStamp);
         }else if(id == R.id.tomorrow_chip_button){
             calendar.add(Calendar.DAY_OF_YEAR,1);
             dueDate = calendar.getTime();
-            Log.d("onCreate", "tomorrow : "+dueDate.toString());
+            dueDateTimeStamp =  calendar.getTimeInMillis();
+
+            Log.d("onCreate", "tomorrow : "+dueDateTimeStamp);
         }else if(id == R.id.next_week_chip_button){
             calendar.add(Calendar.DAY_OF_YEAR,7);
             dueDate = calendar.getTime();
-            Log.d("onCreate", "week : "+dueDate.toString());
+            dueDateTimeStamp =  calendar.getTimeInMillis();
+
+            Log.d("onCreate", "week : "+dueDateTimeStamp);
         }
     }
 }

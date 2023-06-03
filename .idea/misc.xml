@@ -6,10 +6,11 @@
         <entry key="..\:/MyToDoList/app/src/main/res/drawable/background.xml" value="0.2" />
         <entry key="..\:/MyToDoList/app/src/main/res/layout/about_activity.xml" value="0.1431159420289855" />
         <entry key="..\:/MyToDoList/app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
-        <entry key="..\:/MyToDoList/app/src/main/res/layout/bottom_sheet.xml" value="0.176" />
+        <entry key="..\:/MyToDoList/app/src/main/res/layout/bottom_sheet.xml" value="0.2" />
         <entry key="..\:/MyToDoList/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.1431159420289855" />
         <entry key="..\:/MyToDoList/app/src/main/res/layout/todo_row.xml" value="0.2" />
         <entry key="..\:/MyToDoList/app/src/main/res/menu/main_menu.xml" value="0.22239583333333332" />
+        <entry key="..\:/MyToDoList/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.233" />
       </map>
     </option>
   </component>
